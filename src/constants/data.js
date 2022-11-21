@@ -7,6 +7,19 @@ const data = {
     },
     summary: [
         {
+            title: 'Write and Save Notes',
+            subtitle: 'Storaged Used:',
+            value: 'Cyber Security is .....',
+            percent: 12
+        },
+        {
+            title: 'Notification Center',
+            subtitle: 'Every Major Company hiring or Competitions will be Notified here',
+            percent: 20,
+            value: 'Notifications: 20',
+            
+        },
+        {
             title: 'Syllabus',
             subtitle: 'Sem 7',
             value: '7 Subjects',
@@ -14,8 +27,8 @@ const data = {
             
         },
         {
-            title: 'Resources',
-            subtitle: '',
+            title: 'Academic Resources',
+            subtitle: 'B.Tech CSE VII',
             value: 'Website / Notes',
             percent: 30
         },
@@ -27,7 +40,7 @@ const data = {
         },
         {
             title: 'YouTube Resources',
-            subtitle: 'Related to your subjects',
+            subtitle: 'Suggested by Seniors',
             value: '275 Related Videos',
             percent: 55
         },
@@ -40,9 +53,10 @@ const data = {
         {
             title: 'Placement Resources',
             subtitle: 'Top Placement Web Sites',
-            value: 'Top Web Sites',
+            value: 'Web Sites / Competitions / Courses / Companies',
             percent: 70
         }
+      
     ],
     revenueSummary: {
         title: 'Revenue',
