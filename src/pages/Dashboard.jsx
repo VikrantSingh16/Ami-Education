@@ -60,7 +60,7 @@ const Dashboard = () => {
                 <div className="mb">
                     <OverallList />
                 </div>
-                <div className="title mb">Revenue by channel</div>
+                <div className="title mb">Subjects</div>
                 <div className="mb">
                     <RevenueList />
                 </div>
