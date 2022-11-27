@@ -1,9 +1,10 @@
 import React from 'react'
+import Notes from "./Notes"
 
 const Blank = () => {
     return (
         <div>
-            Coming soon 
+        <Notes/>
         </div>
     )
 }
