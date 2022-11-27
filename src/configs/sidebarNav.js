@@ -12,10 +12,10 @@ const sidebarNav = [
         text: 'Your Notes'
     },
     {
-        link: '/products',
-        section: 'products',
+        link: '/syllabus',
+        section: 'syllabus',
         icon: <i className='bx bx-cube'></i>,
-        text: 'Ranking'
+        text: 'syllabus'
     },
     {
         link: '/academicResoucre',
@@ -24,17 +24,18 @@ const sidebarNav = [
         text: 'Academic Resources'
     },
     {
-        link: '/stats',
-        section: 'stats',
+        link: '/placement',
+        section: 'placement',
         icon: <i className='bx bx-line-chart'></i>,
-        text: 'Profile'
+        text: 'Placement Resources'
     },
     {
-        link: '/settings',
-        section: 'settings',
-        icon: <i className='bx bx-cog'></i>,
-        text: 'Settings'
+        link: '/stats',
+        section: 'stats',
+        icon: <i className='bx bx-cube'></i>,
+        text: 'Profile'
     }
+  
 ]
 
 export default sidebarNav

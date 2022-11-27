@@ -6,6 +6,7 @@ import Notes from './pages/Notes'
 import Dashboard from './pages/Dashboard'
 import MainLayout from './layout/MainLayout'
 import AcademicRes from './pages/AcademicRes'
+import Placement from './pages/Placement'
 
 function App() {
     return (
@@ -14,9 +15,9 @@ function App() {
                 <Route path="/" element={<MainLayout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="notes" element={<Notes />} />
-                    <Route path="products" element={<Blank />} />
+                    <Route path="syllabus" element={<Blank />} />
                     <Route path="academicResoucre" element={<AcademicRes />} />
-                    <Route path="settings" element={<Blank />} />
+                    <Route path="placement" element={<Placement/>} />
                     <Route path="stats" element={<Blank />} />
                 </Route>
             </Routes>
