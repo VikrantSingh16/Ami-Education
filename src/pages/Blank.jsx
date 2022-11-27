@@ -4,7 +4,8 @@ import Notes from "./Notes"
 const Blank = () => {
     return (
         <div>
-        <Notes/>
+        {/* <Notes/> */}
+        coming soon
         </div>
     )
 }

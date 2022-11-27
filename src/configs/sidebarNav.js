@@ -6,10 +6,10 @@ const sidebarNav = [
         text: 'Ami-Education Home'
     },
     {
-        link: '/orders',
-        section: 'orders',
+        link: '/notes',
+        section: 'notes',
         icon: <i className='bx bx-receipt' ></i>,
-        text: 'Subjects'
+        text: 'Your Notes'
     },
     {
         link: '/products',
@@ -18,10 +18,10 @@ const sidebarNav = [
         text: 'Ranking'
     },
     {
-        link: '/customers',
-        section: 'customers',
+        link: '/academicResoucre',
+        section: 'academicResoucre',
         icon: <i className='bx bx-user'></i>,
-        text: 'Students'
+        text: 'Academic Resources'
     },
     {
         link: '/stats',

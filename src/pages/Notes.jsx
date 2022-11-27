@@ -62,7 +62,7 @@ function Notes() {
     {/* Upload PDF */}
     <form>
 
-      <label><h5>Upload PDF</h5></label>
+      <label><h5>Upload Notes in PDF</h5></label>
       <br></br>
 
       <input type='file' className="form-control"
@@ -75,7 +75,7 @@ function Notes() {
     </form>
 
     {/* View PDF */}
-    <h5>View PDF</h5>
+    <h5>View Notes</h5>
     <div className="viewer">
 
       {/* render this if we have a pdf file */}
