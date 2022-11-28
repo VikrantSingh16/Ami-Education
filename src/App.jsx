@@ -7,7 +7,10 @@ import Dashboard from './pages/Dashboard'
 import MainLayout from './layout/MainLayout'
 import AcademicRes from './pages/AcademicRes'
 import Placement from './pages/Placement'
-
+import YouTubeRes from './pages/YouTubeRes'
+import { DsaCodingQ } from './pages/DsaCodingQ'
+import { RoadMap } from './pages/RoadMap'
+import {Notifications} from './pages/Notifications'
 function App() {
     return (
         <BrowserRouter>
@@ -18,7 +21,10 @@ function App() {
                     <Route path="syllabus" element={<Blank />} />
                     <Route path="academicResoucre" element={<AcademicRes />} />
                     <Route path="placement" element={<Placement/>} />
-                    <Route path="stats" element={<Blank />} />
+                    <Route path="youtuberes" element={<YouTubeRes/>} />
+                    <Route path="dsares" element={<DsaCodingQ/>} />
+                    <Route path="roadmap" element={<RoadMap/>} />
+<Route path="notifications" element={<Notifications/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

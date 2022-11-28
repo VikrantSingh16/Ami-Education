@@ -30,10 +30,29 @@ const sidebarNav = [
         text: 'Placement Resources'
     },
     {
-        link: '/stats',
-        section: 'stats',
+        link: '/youtuberes',
+        section: 'youtuberes',
         icon: <i className='bx bx-cube'></i>,
-        text: 'Profile'
+        text: 'YouTube Resources'
+    },
+    {
+        link: '/dsares',
+        section: 'dsares',
+        icon: <i className='bx bx-cube'></i>,
+        text: 'DSA Coding Questions'
+    },
+    {
+        link: '/roadmap',
+        section: 'roadmap',
+        icon: <i className='bx bx-cube'></i>,
+        text: 'Road Map'
+    }
+    ,
+    {
+        link: '/notifications',
+        section: 'notifications',
+        icon: <i className='bx bx-cube'></i>,
+        text: 'Notifications'
     }
   
 ]
