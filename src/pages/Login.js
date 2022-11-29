@@ -28,7 +28,7 @@ function Login({
       <div className="w-full flex items-center justify-center lg:w-1/2">
       <div className=' w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100'>
             <h1 className='text-5xl font-semibold'>Welcome Back</h1>
-            <p className='font-medium text-lg text-gray-500 mt-4'>Welcome back! Please enter you details.</p>
+            <p className='font-medium text-lg text-gray-500 mt-4'>Welcome back!</p>
             <div className='mt-8'>
                 <div className='flex flex-col'>
                     <label className='text-lg font-medium'>Email</label>
@@ -44,7 +44,7 @@ function Login({
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-                        placeholder="Enter your email"
+                        placeholder="Enter your Password"
                         type={"password"}
                     />
                 </div>
