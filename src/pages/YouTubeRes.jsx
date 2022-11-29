@@ -1,15 +1,49 @@
 import React from 'react'
-
+import {useEffect,useState} from 'react'
+import firebase from "../firebase"
 function YouTubeRes() {
+
+  const [syllabus,setSyllabus] = useState([]);
+  const [loading,setLoading] = useState(false);
+  const ref = firebase.firestore().collection("youtube_res_sem7");
+  function getSyllabus(){
+    setLoading(true);
+    ref.onSnapshot((querySnapshot)=>{
+      const syllabusItems = [];
+      querySnapshot.forEach((doc)=>{
+        syllabusItems.push(doc.data());
+      });
+      setSyllabus(syllabusItems);
+      setLoading(false);
+    })
+  }
+  useEffect(()=>{
+    getSyllabus();
+  },[]);
+  if(loading){
+    return <h1>Loading....</h1>
+  }
   return (
     <div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fM4qTMfCoak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe  style={{marginLeft:"70px"}}width="560" height="315" src="https://www.youtube.com/embed/xEmrFePGjEg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe style={{marginTop:"50px"}} width="560" height="315" src="https://www.youtube.com/embed/X6CkWPjLkhg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe style={{marginLeft:"70px"}} width="560" height="315" src="https://www.youtube.com/embed/6Im01qq9zFs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       <h1>YouTube Resources</h1>
+        {
+          syllabus.map((doc)=>(
+         <div>
+          <center>
+
+            <iframe style={{margin:"50px",borderRadius:"20px"}} src={doc.link} width={"80%"} height={1000}></iframe>
+           
+            </center>
+           </div>
+
+          
+          ))}
   
+            
+     
     </div>
-  )
+    )
 }
+
 
 export default YouTubeRes

@@ -23,7 +23,8 @@ function AcademicRes() {
   }
   return (
     <div>
-       
+              <h1>Syllabus</h1>
+
         {
           syllabus.map((doc)=>(
          <div>
