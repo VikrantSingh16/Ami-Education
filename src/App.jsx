@@ -42,10 +42,8 @@ function App() {
     if(authState === null) return <div className='font-bold text-center text-5xl'>loading...</div>
     if(authState === 'login') return <Login setAuthState={setAuthState} setUser={setUser}/>
     if(authState === 'register') return <Register setAuthState={setAuthState} setUser={setUser}/> 
-    if(user) return <Home user={user} setAuthState={setAuthState} setUser={setUser}/>
-  
-
-    return (
+    if(user) 
+  return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainLayout />}>
