@@ -9,6 +9,7 @@ const TopNav = () => {
     }
 
     return (
+
         <div className='topnav'>
             <UserInfo user={data.user} />
             <div className="sidebar-toggle" onClick={openSidebar}>

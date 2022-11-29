@@ -86,7 +86,7 @@ export default function Register({
                         value={sem}
                         onChange={(e) => setSem(e.target.value)}
                         className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-                        placeholder="Enter your semester"
+                        placeholder="Enter your semester format: (sem7)"
                         type={"text"}
                     />
                 </div>
