@@ -31,7 +31,7 @@ const Dashboard = () => {
     return (
         <DashboardWrapper>
             <DashboardWrapperMain>
-                <div className="row">
+                <div className="row" >
                     <div className="col-8 col-md-12">
                         <div className="row">
                             {

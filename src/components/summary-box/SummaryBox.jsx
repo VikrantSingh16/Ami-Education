@@ -27,9 +27,9 @@ ChartJS.register(
 
 const SummaryBox = ({ item }) => {
     return (
-        <Box>
+        <Box >
             <div className='summary-box'>
-                <div className="summary-box__info">
+                <div className="summary-box__info" >
                     <div className="summary-box__info__title">
                         <div>{item.title}</div>
                         <span>{item.subtitle}</span>
