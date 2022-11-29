@@ -71,7 +71,7 @@ function Sidebar ({  user,
                 
                 Logout
             </button>
-                    {/* <div className="sidebar__menu__item__txt">
+                    {/* <div className="w-40 active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg"  onClick={signOutHandler}>
                         Logout
                     </div> */}
                 </div>

@@ -14,21 +14,60 @@ export default function Register({
     const [password, setPassword] = React.useState('');
 
 
+    // const adduser = async (e) => {
+    //     e.preventDefault();  
+       
+    //     try {
+    //         const docRef = await addDoc(collection(db, "user"), {
+    //           todo: todo
+    //         });
+    //         console.log("Document written with ID: ", docRef.id);
+    //       } catch (e) {
+    //         console.error("Error adding document: ", e);
+    //       }
+    // }
 
 
+    const onSignUpHandle = async (e) => {
+        e.preventDefault();
+        try{
+            if(email !== null && password !== null) {
+                createUserWithEmailAndPassword(auth, email, password)
+                .then((user) => {
+                    setUser(user.user.email);
+                    setAuthState('login')
+                    
+                    const docRef = await addDoc(collection(db, "user"), {
+                        user: user,
+                        
+                })
+                .catch((err) => {
+                    alert(err)
+                })
+            }
+        }}
 
-    const onSignUpHandle = () => {
-        if(email !== null && password !== null) {
-            createUserWithEmailAndPassword(auth, email, password)
-            .then((user) => {
-                setUser(user.user.email);
-                setAuthState('login')
-            })
-            .catch((err) => {
-                alert(err)
-            })
-        }
+        catch (e) {
+            console.error("Error adding document: ", e);
+          }
+       
     }
+
+
+
+
+    // const onSignUpHandle = () => {
+    //     if(email !== null && password !== null) {
+    //         createUserWithEmailAndPassword(auth, email, password)
+    //         .then((user) => {
+    //             setUser(user.user.email);
+    //             setAuthState('login')
+    //         })
+    //         .catch((err) => {
+    //             alert(err)
+    //         })
+    //     }
+    // }
 
 
   
