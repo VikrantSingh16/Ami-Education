@@ -1,117 +1,59 @@
 import React from 'react'
-// import {firestore} from "../firebase"
-// import {collection ,getDocs,addDoc,updateDoc,doc} from "firebase/firestore";
-
-import {useState} from 'react'
-// Import Worker
-import { Worker } from '@react-pdf-viewer/core';
-// Import the main Viewer component
-import { Viewer } from '@react-pdf-viewer/core';
-// Import the styles
-import '@react-pdf-viewer/core/lib/styles/index.css';
-// default layout plugin
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
-// Import styles of default layout plugin
-import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-
-// const notespdf=collection(firestore,"cse");
-
-
-
+import firebase from "../firebase"
+import {useState,useEffect} from 'react'
 function Notes() {
+  const user = firebase.auth().currentUser;
 
- // creating new plugin instance
- const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  const [doctor,setDoctor] = useState([]);
+  const [loading,setLoading] = useState(false);
+  const ref = firebase.firestore().collection(user.email);
+  function getDoctors(){
+    setLoading(true);
+    ref.onSnapshot((querySnapshot)=>{
+      const items = [];
+      querySnapshot.forEach((doc)=>{
+        items.push(doc.data());
+      });
+      setDoctor(items);
+      setLoading(false);
+    })
+  }
+  useEffect(()=>{
+    getDoctors();
+  },[]);
+  
 
- // pdf file onChange state
- const [pdfFile, setPdfFile]=useState(null);
-
- // pdf file error state
- const [pdfError, setPdfError]=useState('');
+const [note,setNote] = useState('');
+const onSubmit = ()=>{
 
 
- // handle file onChange event
- const allowedFiles = ['application/pdf'];
- const handleFile = (e) =>{
-   let selectedFile = e.target.files[0];
-   // console.log(selectedFile.type);
-   if(selectedFile){
-     if(selectedFile&&allowedFiles.includes(selectedFile.type)){
-       let reader = new FileReader();
-       reader.readAsDataURL(selectedFile);
-       reader.onloadend=(e)=>{
-         setPdfError('');
-         setPdfFile(e.target.result);
-       }
-     }
-     else{
-       setPdfError('Not a valid pdf: Please select only PDF');
-       setPdfFile('');
-     }
-   }
-   else{
-     console.log('please select a PDF');
-   }
+  firebase.firestore().collection(user.email).doc().set({
+   "note":note 
+})
+.then(() => {
+    console.log("Document successfully written!");
+})
+.catch((error) => {
+    alert("Error writing document: ", error);
+});
 }
+ 
 
 
   return (
-   
-    <div className="container">
+   <div>
 
-    {/* Upload PDF */}
-    <form>
+    <textarea onChange={(e)=>setNote(e.target.value)}></textarea>
+    <button onClick={onSubmit}>submit</button>
+    {
+          doctor.map((doc)=>(
+          
+           <p> {doc.note}</p>
+          
 
-      <label><h5>Upload Notes in PDF</h5></label>
-      <br></br>
-
-      <input type='file' className="form-control"
-      onChange={handleFile}></input>
-
-      {/* we will display error message in case user select some file
-      other than pdf */}
-      {pdfError&&<span className='text-danger'>{pdfError}</span>}
-
-    </form>
-
-    {/* View PDF */}
-    <h5>View Notes</h5>
-    <div className="viewer">
-
-      {/* render this if we have a pdf file */}
-      {pdfFile&&(
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.12.313/build/pdf.worker.min.js">
-          <Viewer fileUrl={pdfFile}
-          plugins={[defaultLayoutPluginInstance]}></Viewer>
-        </Worker>
-      )}
-
-      {/* render this if we have pdfFile state null   */}
-      {!pdfFile&&<>No file is selected yet</>}
-
-    </div>
-
-  </div>
-
-
-
-
-
-  )
+          ))}
+   </div>
+  );
 }
 
 export default Notes
-/*
- const addNotes = async (e) => {
-        e.preventDefault();  
-       
-        try {
-            const docRef = await addDoc(collection(firestore, "notes"), {
-              todo: todo,    
-            });
-            console.log("Document written with ID: ", docRef.id);
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }
-    }
-*/
