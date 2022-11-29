@@ -2,6 +2,7 @@ import React from 'react'
 import firebase from "../firebase"
 import {useState,useEffect} from 'react'
 function Notes() {
+  
   const user = firebase.auth().currentUser;
 
   const [doctor,setDoctor] = useState([]);
@@ -37,8 +38,15 @@ const onSubmit = ()=>{
     alert("Error writing document: ", error);
 });
 }
- 
 
+function deleteNote(id){
+alert(id)
+firebase.firestore().collection(user.email).doc().delete().then(() => {
+  console.log("Document successfully deleted!");
+}).catch((error) => {
+  console.error("Error removing document: ", error);
+});
+}
 
   return (
    <div>
@@ -47,10 +55,10 @@ const onSubmit = ()=>{
     <button onClick={onSubmit}>submit</button>
     {
           doctor.map((doc)=>(
-          
+          <div>
            <p> {doc.note}</p>
-          
-
+          <button onClick={()=>{deleteNote()}} style={{border:"2px solid black"}}>Delete</button>
+</div>
           ))}
    </div>
   );
