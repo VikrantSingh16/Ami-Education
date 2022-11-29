@@ -135,7 +135,7 @@ export default function Register({
                 </div>
                 <div className='mt-8 flex justify-center items-center'>
                     <p className='font-medium text-base'>Already have an account?</p>
-                    <button className='ml-2 font-medium text-base text-violet-500'>Login</button>
+                    <button onClick={() => setAuthState('login')} className='ml-2 font-medium text-base text-violet-500'>Login</button>
                 </div>
             </div>
         </div>
