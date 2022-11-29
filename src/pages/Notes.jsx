@@ -1,6 +1,7 @@
 import React from 'react'
 import firebase from "../firebase"
 import {useState,useEffect} from 'react'
+import './notes.scss'
 function Notes() {
   
   const user = firebase.auth().currentUser;
@@ -51,15 +52,26 @@ firebase.firestore().collection(user.email).doc().delete().then(() => {
   return (
    <div>
 
-    <textarea onChange={(e)=>setNote(e.target.value)}></textarea>
-    <button onClick={onSubmit}>submit</button>
-    {
+    
+    <center>
+    <textarea  placeholder="write here..."className="paper-shadow note" onChange={(e)=>setNote(e.target.value)}></textarea>
+    
+    </center>
+    <center><button style={{marginTop:"10",marginBottom:"30px",marginTop:"20px",backgroundColor:"#E8A317",width:"100px",color:"white"}} onClick={onSubmit}>submit</button></center>
+    <h3 style={{marginTop:"20px",marginBottom:"20px",fontWeight:"bolder",fontSize:"1.8rem"}}>Your notes..</h3>
+    <div className='container'>
+   
+    {       
           doctor.map((doc)=>(
-          <div>
-           <p> {doc.note}</p>
-          <button onClick={()=>{deleteNote()}} style={{border:"2px solid black"}}>Delete</button>
+            
+          <div className='boxn'>
+           <div class="notes"> {doc.note}</div>
+          <button style={{width:"60px",height:"40px",backgroundColor:"red",color:"white",borderRadius:"12px",padding:"5px" ,fontSize:"0.8rem",marginTop:"10%"}} onClick={()=>{deleteNote()}}>Delete</button>
 </div>
           ))}
+    </div>
+    
+   
    </div>
   );
 }

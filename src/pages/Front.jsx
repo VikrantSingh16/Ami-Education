@@ -36,7 +36,7 @@ function Front() {
       <div class="content">
         <h3>Notes</h3>
         <p>keep your notes safe & orgsnized</p>
-        <a onClick={navigatenotes} style={{color:"white"}}>Start</a>
+        <a onClick={navigatenotes} >Start</a>
       </div>
     </div>
   </div>
@@ -66,22 +66,56 @@ function Front() {
     <div class="box">
       <div class="content">
 
-        <h3>Card Two</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-        <a href="#">Read More</a>
+        <h3>Placement</h3>
+        <p>If opportunity doesn't knock, build a door.</p>
+        <a style={{backgroundColor:"#F67280"}}onClick={navigateplacement}>Explore</a>
       </div>
     </div>
   </div>
   <div class="card">
     <div class="box">
       <div class="content">
-        <h2>03</h2>
-        <h3>Card Three</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-        <a href="#">Read More</a>
+      
+        <h3>Videos</h3>
+        <p> Audio visuals i.e using two or more senses to learn information greatly improves retention and recall.</p>
+        <a  style={{backgroundColor:"#FFA500"}}onClick={navigateutube}>watch here</a>
       </div>
     </div>
   </div>
+
+  <div class="card">
+    <div class="box">
+      <div class="content">
+
+        <h3>DSA</h3>
+        <p>Get your Data structures correct first & the rest of program will write itself </p>
+        <a style={{backgroundColor:"#FFDF00"}}onClick={navigatedsa}>code here</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="box">
+      <div class="content">
+
+        <h3>Roadmap</h3>
+        <p>All you need is a plan,a roadmap and courage to press on to your destination.</p>
+        <a style={{ backgroundColor:"#B0BF1A"}}onClick={navigaterdmp}>Explore</a>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="box">
+      <div class="content">
+
+        <h3>Notification</h3>
+        <p>Your job notifications are piling up .</p>
+        <a  style={{backgroundColor:"#3090C7"}}onClick={navigatenotification}>Check now</a>
+      </div>
+    </div>
+  </div>
+
+
 </div>
     </div>
   )
