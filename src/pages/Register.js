@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { collection, addDoc } from "firebase/firestore";
-import {db} from '../firebase';
-
+import {useEffect,useState} from 'react'
+import firebase from "../firebase"
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 
@@ -12,8 +12,8 @@ export default function Register({
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-
-
+    const [sem,setSem]=React.useState('')
+    const [name,setName] = React.useState('')
     // const adduser = async (e) => {
     //     e.preventDefault();  
        
@@ -28,46 +28,38 @@ export default function Register({
     // }
 
 
-    const onSignUpHandle = async (e) => {
-        e.preventDefault();
-        try{
-            if(email !== null && password !== null) {
-                createUserWithEmailAndPassword(auth, email, password)
-                .then((user) => {
-                    setUser(user.user.email);
-                    setAuthState('login')
-                    
-                    const docRef = await addDoc(collection(db, "user"), {
-                        user: user,
-                        
-                })
-                .catch((err) => {
-                    alert(err)
-                })
-            }
-        }}
+    
 
-        catch (e) {
-            console.error("Error adding document: ", e);
-          }
+
+
+
+    const onSignUpHandle = () => {
+        if(email !== null && password !== null) {
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((user) => {
+                setUser(user.user.email);
+                setAuthState('login')
+                firebase.firestore().collection("users").doc(email).set({
+                    "name": name,
+                    "semester":sem,
+                    "email": email,
+                    "password": password
+                })
+                .then(() => {
+                    console.log("Document successfully written!");
+                })
+                .catch((error) => {
+                    alert("Error writing document: ", error);
+                });
+            })
+            .catch((err) => {
+                alert(err)
+            })
+        }
+       
+
        
     }
-
-
-
-
-    // const onSignUpHandle = () => {
-    //     if(email !== null && password !== null) {
-    //         createUserWithEmailAndPassword(auth, email, password)
-    //         .then((user) => {
-    //             setUser(user.user.email);
-    //             setAuthState('login')
-    //         })
-    //         .catch((err) => {
-    //             alert(err)
-    //         })
-    //     }
-    // }
 
 
   
@@ -78,6 +70,26 @@ export default function Register({
             <h1 className='text-5xl font-semibold'>Register</h1>
             <p className='font-medium text-lg text-gray-500 mt-4'>Get started ! Please enter you details.</p>
             <div className='mt-8'>
+            <div className='flex flex-col mt-4'>
+                    <label className='text-lg font-medium'>Name</label>
+                    <input 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                        placeholder="Enter your Name"
+                        type={"text"}
+                    />
+                </div>
+                <div className='flex flex-col mt-4'>
+                    <label className='text-lg font-medium'>Semester</label>
+                    <input 
+                        value={sem}
+                        onChange={(e) => setSem(e.target.value)}
+                        className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                        placeholder="Enter your semester"
+                        type={"text"}
+                    />
+                </div>
                 <div className='flex flex-col'>
                     <label className='text-lg font-medium'>Email</label>
                     <input 
@@ -96,6 +108,7 @@ export default function Register({
                         type={"password"}
                     />
                 </div>
+                
                 <div className='mt-8 flex justify-between items-center'>
                     {/* <div>
                         <input  type="checkbox" id='remember'/>
