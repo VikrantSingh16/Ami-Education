@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {firestore} from '../f'
 function Placement() {
   return (
     <div>
@@ -10,7 +10,8 @@ function Placement() {
     <h6>Explore & compare</h6>
 </div>
 <div>
-<iframe style={{margin:"5px",borderRadius:"20px"}} src="https://www.scimagoir.com/rankings.php?area=1700&sector=Private" width={1200} height={380}></iframe>
+    firebase.map(<iframe style={{margin:"5px",borderRadius:"20px"}} src={firebase.data} width={1200} height={380}></iframe>
+)
 </div>
 
 <div>
