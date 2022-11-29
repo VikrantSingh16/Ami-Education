@@ -2,11 +2,27 @@ import React, { useEffect, useState } from 'react'
 import './sidebar.scss'
 import { Link, useLocation } from 'react-router-dom'
 import { images } from '../../constants'
+
+import { auth } from '../../firebase';
+import { signOut } from 'firebase/auth';
 import sidebarNav from '../../configs/sidebarNav'
 
-const Sidebar = () => {
+function Sidebar ({  user,
+    setAuthState,
+    setUser}) {
     const [activeIndex, setActiveIndex] = useState(0)
     const location = useLocation()
+
+       
+    const signOutHandler = () => {
+        signOut(auth)
+        .then(() => {
+            setUser(null);
+            setAuthState('login');
+        })
+        .catch((err) => console.log(err));
+    }
+
 
     useEffect(() => {
         const curPath = window.location.pathname.split('/')[1]
@@ -48,9 +64,16 @@ const Sidebar = () => {
                     <div className="sidebar__menu__item__icon">
                         <i className='bx bx-log-out'></i>
                     </div>
-                    <div className="sidebar__menu__item__txt">
+
+                    <button 
+                onClick={signOutHandler}
+                className='"sidebar__menu__item__txt"'>
+                
+                Logout
+            </button>
+                    {/* <div className="sidebar__menu__item__txt">
                         Logout
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
