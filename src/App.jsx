@@ -11,6 +11,7 @@ import YouTubeRes from './pages/YouTubeRes'
 import { DsaCodingQ } from './pages/DsaCodingQ'
 import { RoadMap } from './pages/RoadMap'
 import {Notifications} from './pages/Notifications'
+import Syllabus from './pages/Syllabus'
 function App() {
     return (
         <BrowserRouter>
@@ -18,7 +19,7 @@ function App() {
                 <Route path="/" element={<MainLayout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="notes" element={<Notes />} />
-                    <Route path="syllabus" element={<Blank />} />
+                    <Route path="syllabus" element={<Syllabus />} />
                     <Route path="academicResoucre" element={<AcademicRes />} />
                     <Route path="placement" element={<Placement/>} />
                     <Route path="youtuberes" element={<YouTubeRes/>} />

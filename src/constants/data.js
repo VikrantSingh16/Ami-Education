@@ -23,7 +23,7 @@ const data = {
             title: 'Syllabus',
             subtitle: 'Sem 7',
             value: '7 Subjects',
-            percent: 60,
+            percent: 70,
             
         },
         {

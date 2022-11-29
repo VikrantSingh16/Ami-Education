@@ -101,3 +101,17 @@ function Notes() {
 }
 
 export default Notes
+/*
+ const addNotes = async (e) => {
+        e.preventDefault();  
+       
+        try {
+            const docRef = await addDoc(collection(firestore, "notes"), {
+              todo: todo,    
+            });
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+    }
+*/
