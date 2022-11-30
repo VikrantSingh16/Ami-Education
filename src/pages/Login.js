@@ -50,7 +50,7 @@ function Login({
                 </div>
                 <div className='mt-8 flex justify-between items-center'>
                     <div>
-                        <input  type="checkbox" id='remember'/>
+                        {/* <input  type="checkbox" id='remember'/> */}
                         {/* <label className='ml-2 font-medium text-base' for="remember">Remember for 30 days</label> */}
                     </div>
                     {/* <button className='font-medium text-base text-violet-500'>Forgot password</button> */}
