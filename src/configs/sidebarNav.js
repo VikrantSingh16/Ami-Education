@@ -42,18 +42,19 @@ const sidebarNav = [
         text: 'DSA Coding Questions'
     },
     {
-        link: '/roadmap',
-        section: 'roadmap',
-        icon: <i className='bx bx-cube'></i>,
-        text: 'Road Map'
-    }
-    ,
-    {
         link: '/notifications',
         section: 'notifications',
         icon: <i className='bx bx-cube'></i>,
         text: 'Notifications'
-    }
+    },
+    {
+        link: '/roadmap',
+        section: 'roadmap',
+        // icon: <i className='bx bx-cube'></i>,
+        // text: 'Road Map'
+    },
+    
+    
   
 ]
 

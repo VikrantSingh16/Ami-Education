@@ -1,5 +1,6 @@
 import React from 'react'
 import firebase from "../firebase"
+import {collection, deleteDoc,doc, DocumentReference} from "firebase/firestore"
 import {useState,useEffect} from 'react'
 import './notes.scss'
 function Notes() {
@@ -14,14 +15,17 @@ function Notes() {
     ref.onSnapshot((querySnapshot)=>{
       const items = [];
       querySnapshot.forEach((doc)=>{
-        items.push(doc.data());
+        items.push([doc.data(),doc.id]);
+        console.log("line" +doc);
       });
       setDoctor(items);
       setLoading(false);
     })
   }
+  console.log(doctor)
   useEffect(()=>{
     getDoctors();
+    console.log(doctor);
   },[]);
   
 
@@ -30,7 +34,9 @@ const onSubmit = ()=>{
 
 
   firebase.firestore().collection(user.email).doc().set({
-   "note":note 
+   "note":note,
+  
+
 })
 .then(() => {
     console.log("Document successfully written!");
@@ -40,13 +46,10 @@ const onSubmit = ()=>{
 });
 }
 
-function deleteNote(id){
-alert(id)
-firebase.firestore().collection(user.email).doc().delete().then(() => {
-  console.log("Document successfully deleted!");
-}).catch((error) => {
-  console.error("Error removing document: ", error);
-});
+function deleteNote(data){
+console.log(data);
+  firebase.firestore().collection(user.email).doc(data).delete().then(console.log('deleted')).catch(err=>alert(err))
+
 }
 
   return (
@@ -63,10 +66,11 @@ firebase.firestore().collection(user.email).doc().delete().then(() => {
    
     {       
           doctor.map((doc)=>(
-            
+           
           <div className='boxn'>
-           <div class="notes"> {doc.note}</div>
-          <button style={{width:"60px",height:"40px",backgroundColor:"red",color:"white",borderRadius:"12px",padding:"5px" ,fontSize:"0.8rem",marginTop:"10%"}} onClick={()=>{deleteNote()}}>Delete</button>
+           <div class="notes"> {doc[0].note}</div>
+          
+          <button style={{width:"60px",height:"40px",backgroundColor:"red",color:"white",borderRadius:"12px",padding:"5px" ,fontSize:"0.8rem",marginTop:"10%"}} onClick={()=>{deleteNote(doc[1])}}>Delete</button>
 </div>
           ))}
     </div>

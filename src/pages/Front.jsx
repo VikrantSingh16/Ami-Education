@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import './front.scss'
-import { UserCard } from 'react-ui-cards'
 function Front() {
     const navigate = useNavigate();
     const navigateplacement = () => {
