@@ -18,6 +18,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import Register from "./pages/Register";
 import { auth } from './firebase';
+import Front from './pages/Front'
 import { onAuthStateChanged } from 'firebase/auth'
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainLayout />}>
-                    <Route index element={<Dashboard />} />
+                    <Route index element={<Front />} />
                     <Route path="notes" element={<Notes />} />
                     <Route path="syllabus" element={<Syllabus />} />
                     <Route path="academicResoucre" element={<AcademicRes />} />
